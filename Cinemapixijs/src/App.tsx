@@ -1,6 +1,7 @@
 import  { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import MovieSlider from './components/MovieSlider';
 
 const App = () => {
   const [showHero, setShowHero] = useState(true);
@@ -17,6 +18,7 @@ const App = () => {
     <div>
       {showHero && <Hero />}
       <Navbar />
+      <MovieSlider/>
     </div>
   );
 };
