@@ -1,76 +1,77 @@
-// components/MovieSlider.jsx
 import { useEffect, useState } from 'react';
-import Slider from 'react-slick';
+import { Container, Sprite, Text, useApp } from '@inlet/react-pixi';
 import { getAllMovies } from '../services/movieservice';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css"; 
+import * as PIXI from 'pixi.js';
 
 const MovieSlider = () => {
-    const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [positions, setPositions] = useState([]);
 
-    useEffect(() => {
-        const fetchMovies = async () => {
-            const moviesData = await getAllMovies();
-            setMovies(moviesData);
-        };
+  const app = useApp();
 
-        fetchMovies();
-    }, []);
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 4000, 
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 0, 
-        cssEase: 'linear', 
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const moviesData = await getAllMovies();
+      setMovies(moviesData);
+      const initialPositions = moviesData.map((_, i) => ({
+        x: app.screen.width + i * 240, // Space between each movie poster
+        y: 100,
+      }));
+      setPositions(initialPositions);
     };
 
-    return (
-        <div className="w-4/5 mx-auto py-10 rounded-lg">
-            <Slider {...settings}>
-                {movies.map(movie => (
-                    <div key={movie.id} className="p-4">
-                        <div className="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            {movie.photos && movie.photos.length > 0 ? (
-                                <img
-                                    src={`data:${movie.photos[0].contentType};base64,${movie.photos[0].photoData}`}
-                                    alt={movie.movieName || 'Movie Poster'}
-                                    className="w-full h-64 object-cover transform transition-transform duration-500 hover:scale-105"
-                                />
-                            ) : (
-                                <div className="w-full h-64 flex items-center justify-center bg-gray-700">
-                                    <span className="text-white">No Image Available</span>
-                                </div>
-                            )}
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                                <h2 className="text-xl font-semibold text-white">{movie.movieName}</h2>
-                                <span className="text-lg font-bold text-white">{movie.movieTrailer} min</span>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </Slider>
-        </div>
-    );
+    fetchMovies();
+  }, [app.screen.width]);
+
+  useEffect(() => {
+    const ticker = new PIXI.Ticker();
+    ticker.add(() => {
+        // @ts-ignore
+      setPositions((prevPositions) =>
+        prevPositions.map((pos, i) => {
+            // @ts-ignore
+          const newX = pos.x - 4;
+          
+          return {
+            // @ts-ignore
+            ...pos,
+            x: newX < -240 ? app.screen.width + (movies.length - 1) * 240 : newX,
+          };
+        })
+      );
+    });
+    ticker.start();
+
+    return () => ticker.destroy();
+  }, [app.screen.width, movies]);
+
+  return (
+    // @ts-ignore
+    <Container>
+      {positions.map((pos, index) => (
+        // @ts-ignore
+        <Container key={index} x={pos.x} y={pos.y}>
+          <Sprite
+          // @ts-ignore
+            image={`data:${movies[index].photos[0]?.contentType};base64,${movies[index].photos[0]?.photoData}`}
+            width={200}
+            height={300}
+            interactive
+            // @ts-ignore
+            pointerdown={() => console.log(`Clicked on ${movies[index].movieName}`)}
+          />
+          <Text
+          // @ts-ignore
+            text={movies[index].movieName}
+            style={{ fontFamily: 'Arial', fontSize: 24, fill: '#ffffff', align: 'center' }}
+            anchor={0.5}
+            x={100} // Center text in the middle of the poster
+            y={320} // Position text below the poster
+          />
+        </Container>
+      ))}
+    </Container>
+  );
 };
 
 export default MovieSlider;
