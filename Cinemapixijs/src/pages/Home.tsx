@@ -41,12 +41,12 @@ const Home = () => {
         <Stage
           width={document.documentElement.clientWidth}
           height={document.documentElement.clientHeight / 1.5}
-          options={{ backgroundColor: 0xff0000 }}
+          options={{ backgroundColor: 0x121619 }}
         >
           <Container>
             <Text
               text="Welcome to Our Movie Collection"
-              style={{ fontFamily: 'Arial', fontSize: 36, fill: '#1a202c', align: 'center' }}
+              style={{ fontFamily: 'Arial', fontSize: 36, fill: '#ffffff', align: 'center' }}
               anchor={0.5}
               x={document.documentElement.clientWidth / 2}
               y={50}

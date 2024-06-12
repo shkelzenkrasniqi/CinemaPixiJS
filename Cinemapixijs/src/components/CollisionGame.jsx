@@ -6,9 +6,13 @@ const CollisionGame = () => {
 
   useEffect(() => {
     // Initialize PixiJS application
-    const app = new PIXI.Application({ width: 1920, height: 500, backgroundColor: 0x1a202c }); // bg-gray-900
-    gameCanvas.current.appendChild(app.view);
+    const app = new PIXI.Application({
+      width: 1000, // Set width to match window width
+      height: 500,
+      backgroundColor: 0x1a202c,
+    });
 
+    gameCanvas.current.appendChild(app.view);
     // Load images with verified URLs
     PIXI.Loader.shared
       .add('popcorn', 'coke.png') // Replace with verified popcorn image URL
