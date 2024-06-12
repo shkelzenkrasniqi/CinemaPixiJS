@@ -69,7 +69,7 @@ const Trailers = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow flex justify-center items-center flex-wrap">
+      <div className="flex-grow flex justify-center items-center flex-wrap bg-gray-900">
         <div className="grid grid-cols-2 gap-4">
           {[
             { poster: poster1, onClick: () => playTrailer(0) },
