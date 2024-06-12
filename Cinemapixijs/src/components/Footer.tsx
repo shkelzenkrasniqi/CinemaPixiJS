@@ -33,10 +33,10 @@ const Footer = () => {
         <div className="container mx-auto text-center md:text-left">
           <div className="flex flex-wrap mt-3">
             <div className="w-full md:w-1/4 lg:w-1/3 mx-auto mb-4">
-              <h6 className="uppercase font-bold">CINETIXX</h6>
+              <h6 className="uppercase font-bold">CINEMAPIXIJS</h6>
               <hr className="mb-4 mt-0 ml-0 mx-auto w-16 bg-purple-500 h-1"/>
               <p>
-              Welcome to Cinetixx! Dive into the world of cinema with us, where we bring you the latest movies, timeless classics, and everything in between. Whether you're a fan of heart-pounding action, heartwarming dramas, or side-splitting comedies, Cinetixx is your ultimate destination for all things film. 
+              Welcome to Cinemapixijs! Dive into the world of cinema with us, where we bring you the latest movies, timeless classics, and everything in between. Whether you're a fan of heart-pounding action, heartwarming dramas, or side-splitting comedies, Cinetixx is your ultimate destination for all things film. 
               </p>
             </div>
 

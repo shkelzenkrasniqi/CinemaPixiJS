@@ -5,8 +5,8 @@ const FeaturedSection = () => {
 
   const featuredMovies = [
     {
-      title: 'Movie Title 1',
-      description: 'A brief description of Movie Title 1. This is an exciting movie you should watch.',
+      title: 'Avengers End Game',
+      description: 'Last movie of the famous franchise Avengers',
       image: 'https://th.bing.com/th/id/OIP.gDfDAR1YkSKRt6vD9eZKDQHaE8?w=273&h=181&c=7&r=0&o=5&pid=1.7',
       releaseDate: '2023-06-15',
       stats: {
@@ -16,9 +16,9 @@ const FeaturedSection = () => {
       },
     },
     {
-      title: 'Movie Title 2',
-      description: 'A brief description of Movie Title 2. Don’t miss out on this amazing film.',
-      image: 'https://th.bing.com/th/id/OIP.gDfDAR1YkSKRt6vD9eZKDQHaE8?w=273&h=181&c=7&r=0&o=5&pid=1.7',
+      title: 'Scream 2',
+      description: 'Scream the slasher movie.',
+      image: 'scream.avif',
       releaseDate: '2023-07-01',
       stats: {
         earnings: '$2,000,000',
@@ -27,9 +27,9 @@ const FeaturedSection = () => {
       },
     },
     {
-      title: 'Movie Title 3',
-      description: 'A brief description of Movie Title 3. Another great movie to look forward to.',
-      image: 'https://th.bing.com/th/id/OIP.gDfDAR1YkSKRt6vD9eZKDQHaE8?w=273&h=181&c=7&r=0&o=5&pid=1.7',
+      title: 'The conjuring 2',
+      description: 'The second movie of the franchise, featuring "The Nun"',
+      image: 'conjuring.jfif',
       releaseDate: '2023-07-20',
       stats: {
         earnings: '$3,000,000',
