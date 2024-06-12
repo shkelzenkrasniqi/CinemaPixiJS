@@ -1,32 +1,22 @@
-import { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import MovieSlider from './components/MovieSlider';
-import Footer from './components/Footer';
-import { Stage, AppProvider } from '@inlet/react-pixi';
+// src/App.tsx
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Trailers from './pages/Trailers';
+import AddMovies from './pages/AddMovies';
 
 const App = () => {
-  const [showHero, setShowHero] = useState(true);
-  console.log(window.innerWidth);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowHero(false);
-    }, 5000); 
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div>
-      {showHero && <Hero />}
-      <Navbar />
-      
-      <AppProvider>
-        <Stage width={document.documentElement.clientWidth} height={document.documentElement.clientHeight} options={{ backgroundColor: 0xff0000 }} >
-          <MovieSlider />
-        </Stage>
-      </AppProvider>
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="trailers" element={<Trailers />} />
+          
+          <Route path="add" element={<AddMovies />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

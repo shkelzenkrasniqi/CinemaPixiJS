@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,13 +21,13 @@ return(
           href="#"
           className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium transition duration-300"
         >
-          Home
+         <a href="/" className="hover:text-gray-300">Home</a>
         </a>
         <a
           href="#"
           className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium transition duration-300"
         >
-          About
+           <a href="/trailers" className="hover:text-gray-300">Trailers</a>
         </a>
         <a
           href="#"
