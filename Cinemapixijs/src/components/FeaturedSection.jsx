@@ -28,8 +28,41 @@ const FeaturedSection = () => {
     },
     {
       title: 'The conjuring 2',
-      description: 'The second movie of the franchise, featuring "The Nun"',
+      description: 'The second movie of the franchise, featuring "The Nun',
       image: 'conjuring.jfif',
+      releaseDate: '2023-07-20',
+      stats: {
+        earnings: '$3,000,000',
+        ratings: 4.8,
+        ticketsSold: '1,200,000',
+      },
+    },
+    {
+      title: 'Sinister',
+      description: 'Children can also be a nightmare...',
+      image: 'sinister.jfif',
+      releaseDate: '2023-07-20',
+      stats: {
+        earnings: '$13,000,000',
+        ratings: 4.8,
+        ticketsSold: '1,200,000',
+      },
+    },
+    {
+      title: 'Spider-Man No Way Home',
+      description: 'The three Spideys join forces once and for all.',
+      image: 'spiderman.jfif',
+      releaseDate: '2023-07-20',
+      stats: {
+        earnings: '$9,000,000',
+        ratings: 4.8,
+        ticketsSold: '1,200,000',
+      },
+    },
+    {
+      title: 'Pulp Fiction',
+      description: 'Highest Rated Movie of All time.',
+      image: 'fiction.jfif',
       releaseDate: '2023-07-20',
       stats: {
         earnings: '$3,000,000',
